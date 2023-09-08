@@ -1,6 +1,7 @@
 import resolve from '@rollup/plugin-node-resolve';
 //import commonjs from '@rollup/plugin-commonjs'
-import babel from '@rollup/plugin-babel';
+//import babel from '@rollup/plugin-babel';
+import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 import pkg from './package.json' assert {type: 'json'};
 
@@ -27,12 +28,13 @@ export const lib = {
                     moduleDirectories: ['src'],
                 },
             }),
-            babel({
-                extensions,
-                include: ['src/**/*'],
-                babelHelpers: 'bundled',
-                //runtimeHelpers: true,
-            }),
+            typescript()
+            // babel({
+            //     extensions,
+            //     include: ['src/**/*'],
+            //     babelHelpers: "bundled"
+            //     //runtimeHelpers: true,
+            // })
         ],
         output: [
             {
